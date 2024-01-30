@@ -14,10 +14,10 @@ describe("Phase #3 Specs: POST /dogs", () => {
       .set('content-type', 'application/json')
       .send(newDogBody1)
       .then((res) => {
+          expect(res.body.dogId).to.equal(newDogBody1.dogId);
           expect(res).to.have.status(201);
           expect(res).to.be.json;
           expect(res.header['content-type']).to.equal('application/json');
-          expect(res.body.dogId).to.equal(newDogBody1.dogId);
           expect(res.body.name).to.equal(newDogBody1.name);
           expect(res.body.age).to.equal(newDogBody1.age);
       });
